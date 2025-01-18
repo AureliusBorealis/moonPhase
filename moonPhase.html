@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+</head>
+	<body onLoad="calcPhase()">
+		<img id="moon" src="nearside.png" />
+	</body>
+	<script>
+		var lat = 46.123;
+		//last new moon 12/30/24 16:27
+		var last_new_moon = new Date('2024-12-30 16:27');
+		function calcPhase(){
+			var ms_since_last = Date.now()-last_new_moon;
+			const sd = 29.53059;
+			var days_since_last = ms_since_last/1000/86400;
+			console.log(days_since_last);
+			var phase = (sd % days_since_last)/sd;
+			console.log(phase);
+			var illumination = (Math.cos(phase * Math.PI/180.)+1)/2
+			console.log(illumination);
+		}	
+	</script>
+</html>
